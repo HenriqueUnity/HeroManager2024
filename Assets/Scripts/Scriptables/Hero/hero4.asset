@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: hero4
   m_EditorClassIdentifier: 
-  heroName: 
-  power: 0
-  fame: 0
-  value: 0
-  traits: []
-  conditions: []
+  heroName: homem outra coisa
+  power: 350
+  fame: 150
+  value: 250
+  traits:
+  - "Tra\xE7o1"
+  - "Tra\xE7o2"
+  - "Tra\xE7o3"
+  conditions:
+  - 150
+  - 120
+  - 300

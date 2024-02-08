@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Fanatico
   power: 400
-  fame: 0
-  value: 0
-  traits: []
-  conditions: []
+  fame: 200
+  value: 200
+  traits:
+  - "Tra\xE7o1"
+  conditions:
+  - 100
+  - 100
+  - 150

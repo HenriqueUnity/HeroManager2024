@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HeroOverview.unity
     guid: 7862234998a098f30b83138096da428b
+  - enabled: 1
+    path: Assets/Scenes/CrimeOverview.unity
+    guid: 0cef241e4086771979611377ae81073c
+  - enabled: 1
+    path: Assets/Scenes/CrimeScene.unity
+    guid: efe8ef30a254d0e56be671699e0c926b
   m_configObjects: {}

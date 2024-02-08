@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: Luz de alguma cor
   power: 300
-  fame: 0
-  value: 0
-  traits: []
-  conditions: []
+  fame: 100
+  value: 150
+  traits:
+  - "Tra\xE7o1"
+  - "Tra\xE7o2"
+  conditions:
+  - 150
+  - 120
+  - 130

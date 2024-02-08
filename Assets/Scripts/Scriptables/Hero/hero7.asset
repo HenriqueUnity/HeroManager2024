@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: hero7
   m_EditorClassIdentifier: 
-  heroName: 
-  power: 0
-  fame: 0
-  value: 0
-  traits: []
-  conditions: []
+  heroName: bicho piruleta
+  power: 110
+  fame: 500
+  value: 300
+  traits:
+  - "Tra\xE7o1"
+  - "Tra\xE7o2"
+  - "Tra\xE7o3"
+  conditions:
+  - 300
+  - 400
+  - 325

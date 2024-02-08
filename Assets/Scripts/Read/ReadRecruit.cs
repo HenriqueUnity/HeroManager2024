@@ -6,7 +6,7 @@ using TMPro;
 public class ReadRecruit : MonoBehaviour
 {
    private RecruitData recruit;
-   private HeroData[]  heroList;
+   private List<HeroData>  heroList = new();
    [SerializeField] private TextMeshProUGUI[] nameText;
    [SerializeField] private TextMeshProUGUI[] powerText;
 
@@ -15,46 +15,51 @@ public class ReadRecruit : MonoBehaviour
     recruit = GameObject.Find("HeroRecruitData").GetComponent<RecruitData>();
     heroList = recruit.heroRecruit;
 
-    FirstDebug();
-    IndexShuffle();
-    DebugList();
+   
+    ShuffleList(heroList);
+   
     }
   
 
     
 
    public void ReadHeroInfo(){
-    for (int i = 0; i < heroList.Length -4; i++)
+    for (int i = 0; i < heroList.Count -4; i++)
     {
         nameText[i].text = heroList[i].heroName;
         powerText[i].text = heroList[i].power.ToString();
     }
    }
 
-   private void IndexShuffle(){
-    System.Random random = new System.Random();
-        for (int i = heroList.Length - 1; i > 0; i--)
+
+
+   public void ShuffleList<HeroData>(List<HeroData> m_list){
+    System.Random r = new System.Random();
+
+    for (int i = m_list.Count - 1; i > 0; i--)
         {
             // Gera um índice aleatório no intervalo [0, i]
-            int randomIndex = random.Next(0, i + 1);
+            int randomIndex = r.Next(0, i + 1);
 
-            // Troca os elementos nos índices i e randomIndex
-            HeroData temp = heroList[randomIndex];
-            heroList[i] = heroList[randomIndex];
-            
-           
-   }   
+
+            HeroData temp = m_list[i];
+            m_list[i] = m_list[randomIndex];
+            m_list[randomIndex] = temp;
+
+   }
+
+  
 }
-private void FirstDebug(){
-    for (int i = 0; i < heroList.Length; i++)
-  {
-    Debug.Log(heroList[i].heroName);
-  }
-}
-private void DebugList(){
-  for (int i = 0; i < heroList.Length; i++)
-  {
-    Debug.Log(heroList[i].heroName);
-  }
-}
+// private void FirstDebug(){
+//     for (int i = 0; i < heroList.Count; i++)
+//   {
+//     Debug.Log(heroList[i].heroName);
+//   }
+// }
+// private void DebugList(){
+//   for (int i = 0; i < heroList.Count; i++)
+//   {
+//     Debug.Log(heroList[i].heroName);
+//   }
+// }
 }

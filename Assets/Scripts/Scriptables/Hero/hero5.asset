@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: hero5
   m_EditorClassIdentifier: 
-  heroName: 
-  power: 0
-  fame: 0
-  value: 0
-  traits: []
-  conditions: []
+  heroName: senhor daquilo
+  power: 230
+  fame: 150
+  value: 122
+  traits:
+  - "Tra\xE7o1"
+  - "Tra\xE7o2"
+  - "Tra\xE7o3"
+  conditions:
+  - 100
+  - 400
+  - 100

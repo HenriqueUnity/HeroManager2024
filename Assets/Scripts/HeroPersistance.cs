@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Enumeration;
 using UnityEngine;
 
 public class HeroPersistance : MonoBehaviour
 {
    
     private static HeroPersistance instance;
-    [SerializeField] public List<HeroData> myHeros = new();
+    public List<HeroData> myHeros ;
     
 
     // Propriedade pública para acessar a instância Singleton
@@ -16,37 +17,53 @@ public class HeroPersistance : MonoBehaviour
         {
             if (instance == null)
             {
+            
                 // Se a instância ainda não foi criada, tenta encontrá-la na cena
-                instance = FindObjectOfType<HeroPersistance >();
+                instance = FindObjectOfType<HeroPersistance>();
 
                 // Se não encontrar, cria uma nova instância
                 if (instance == null)
                 {
-                    GameObject singletonObject = new GameObject("MeuSingleton");
+                    GameObject singletonObject = new GameObject("HeroPersistance");
                     instance = singletonObject.AddComponent<HeroPersistance>();
                 }
 
                 // Garante que a instância persista entre as cenas
-                DontDestroyOnLoad(instance.gameObject);
+              
+                Debug.Log("Instance created");
             }
 
             return instance;
         }
     }
 
-    // Métodos e propriedades do seu Singleton podem ser adicionados aqui
+    
 
     private void Awake()
     {
-        // Garante que há apenas uma instância deste objeto na cena
-        if (instance != null && instance != this)
+       
+     
+       
+          DontDestroyOnLoad(this);
+        
+       if (instance != null && instance != this)
         {
             Destroy(gameObject);
         }
     }
+    private /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+          HeroMainData();
+    }
 
    private void HeroMainData(){
-   ///read json
+    string fileName = "HeroJson";
+    myHeros = FileHandler.ReadListFromJSON<HeroData>(fileName);
+
    }
 
     

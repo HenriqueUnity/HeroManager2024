@@ -1,36 +1,44 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using TMPro;
-
 using UnityEngine;
+using System;
+
 
 public class JsonWriteReadData : MonoBehaviour
 {
-   [SerializeField] private TMP_InputField nameField;
-   [SerializeField] private TMP_InputField powerField;
-   [SerializeField] private TMP_InputField fameField;
-   [SerializeField] private TMP_InputField costField;
+   
+    private List<HeroData> heroData;
+    
+  
+  
+    void Start()
+    { 
+        heroData = HeroPersistance.Instance.myHeros;  
+        //Debug.Log(Application.persistentDataPath);   
+             
+    }
+
     public void SaveToJson(){
-        HeroData data = new HeroData();
+      try
+   {
+    List<HeroData> data = heroData;           
+   
+   
+    string filePath = "HeroJson";
+     FileHandler.SaveToJSON<HeroData>(data,filePath);     
 
-        data.name  = nameField.text;
-        data.power = float.Parse(powerField.text);
-        data.fame  = float.Parse(fameField.text);
-        data.value = float.Parse(costField.text);
+    Debug.Log("Hero data saved to: " + filePath); }
+      catch (Exception e)
+    {
+    Debug.LogError("Error saving HeroData: " + e.Message); }
 
-
-        string json = JsonUtility.ToJson(data,true);
-        File.WriteAllText(Application.dataPath + "/HeroDataFile.json",json);
     }
 
-    public void LoadToJson(){
-        string json = File.ReadAllText(Application.dataPath + "/HeroDataFile.json");
-        HeroData data = JsonUtility.FromJson<HeroData>(json);
-
-        nameField.text = data.heroName;
-        powerField.text = data.power.ToString();
-        fameField.text = data.fame.ToString();
-        costField.text = data.value.ToString();
-    }
+    // public void LoadToJson(){
+    //     string json = File.ReadAllText(Application.dataPath + "/HeroDataFile.json");
+        
+    //     string data = JsonUtility.FromJson<string>(json);              
+        
+         
+    // }
 }

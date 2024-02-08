@@ -16,7 +16,10 @@ MonoBehaviour:
   power: 200
   fame: 2000
   value: 100
-  traits: []
+  traits:
+  - "Tra\xE7o1"
+  - "Tra\xE7o2"
+  - "Tra\xE7o3"
   conditions:
   - 100
   - 300

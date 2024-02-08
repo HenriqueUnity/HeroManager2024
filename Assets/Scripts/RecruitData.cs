@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RecruitData : MonoBehaviour
 {    
     
-    [SerializeField]public HeroData[] heroRecruit;
+    [SerializeField]public List<HeroData> heroRecruit;
    
 }

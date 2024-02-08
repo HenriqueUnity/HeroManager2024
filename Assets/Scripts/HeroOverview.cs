@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroOverview : MonoBehaviour
@@ -11,9 +12,12 @@ public class HeroOverview : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] traits;
     [SerializeField] private TextMeshProUGUI[] conditions;
 
-    [SerializeField] private HeroData heroData;
+     private HeroData heroData;
+    private HeroPersistance _instance;
     void Start()
     {
+        _instance =  HeroPersistance.Instance;
+        heroData = _instance.myHeros[0];
         ReadHeroData();
     }
 

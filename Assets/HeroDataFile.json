@@ -1,6 +1,34 @@
-{
-    "name": "Freddy",
+[
+  {
+    "heroName": "Capitão alguma coisa",
     "power": 100.0,
-    "fame": 30.0,
-    "value": 50.0
-}
+    "fame": 100.0,
+    "value": 200.0,
+    "traits": ["Traço1", "Traço2", "Traço3"],
+    "conditions": [10.0, 101.0, 10.0]
+  },
+  {
+    "heroName": "Luz de alguma cor",
+    "power": 300.0,
+    "fame": 100.0,
+    "value": 150.0,
+    "traits": ["Traço1", "Traço2"],
+    "conditions": [150.0, 120.0, 130.0]
+  },
+  {
+    "heroName": "Homem inseto",
+    "power": 200.0,
+    "fame": 2000.0,
+    "value": 100.0,
+    "traits": ["Traço1", "Traço2", "Traço3"],
+    "conditions": [100.0, 300.0, 400.0]
+  },
+  {
+    "heroName": "Fanatico",
+    "power": 400.0,
+    "fame": 200.0,
+    "value": 200.0,
+    "traits": ["Traço1"],
+    "conditions": [100.0, 100.0, 150.0]
+  }
+]
