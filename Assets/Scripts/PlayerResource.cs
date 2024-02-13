@@ -1,17 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO.Enumeration;
+using TMPro;
 using UnityEngine;
 
-public class HeroPersistance : MonoBehaviour
+public class PlayerResource : MonoBehaviour
 {
-   
-    private static HeroPersistance instance;
-    public List<HeroData> myHeros ;
-    
-
-    // Propriedade pública para acessar a instância Singleton
-    public static HeroPersistance Instance
+   private static PlayerResource instance;
+   public int money;
+   [SerializeField] private TextMeshProUGUI moneyText;
+    public static PlayerResource Instance
     {
         get
         {
@@ -19,13 +16,13 @@ public class HeroPersistance : MonoBehaviour
             {
             
                 // Se a instância ainda não foi criada, tenta encontrá-la na cena
-                instance = FindObjectOfType<HeroPersistance>();
+                instance = FindObjectOfType<PlayerResource>();
 
                 // Se não encontrar, cria uma nova instância
                 if (instance == null)
                 {
-                    GameObject singletonObject = new GameObject("HeroPersistance");
-                    instance = singletonObject.AddComponent<HeroPersistance>();
+                    GameObject singletonObject = new GameObject("PlayerResource");
+                    instance = singletonObject.AddComponent<PlayerResource>();
                 }
 
                 // Garante que a instância persista entre as cenas
@@ -51,21 +48,14 @@ public class HeroPersistance : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
     void Start()
     {
-    HeroMainData();
+   moneyText = GameObject.Find("moneyText").GetComponent<TextMeshProUGUI>();
+    UpdateAmount();
+
     }
-
-   private void HeroMainData(){
-    string fileName = "HeroJson";
-    myHeros = FileHandler.ReadListFromJSON<HeroData>(fileName);
-
-   }
-
-    
+    public void UpdateAmount(){
+         moneyText.text = money.ToString();
+    }
 }
-
- 
-
-

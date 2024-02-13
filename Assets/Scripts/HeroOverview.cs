@@ -17,13 +17,13 @@ public class HeroOverview : MonoBehaviour
     void Start()
     {
         _instance =  HeroPersistance.Instance;
-        heroData = _instance.myHeros[0];
-        ReadHeroData();
+        ReadHeroData(0);
     }
 
     // Update is called once per frame
-   public void ReadHeroData(){
+   public void ReadHeroData(int index){
 
+    heroData = _instance.myHeros[index];
     heroName.text = heroData.heroName;
     atributes[0].text = heroData.power.ToString();
     atributes[1].text = heroData.fame.ToString();

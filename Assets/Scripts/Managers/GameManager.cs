@@ -1,20 +1,24 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
-    [SerializeField] private SpriteInteraction[] buildings;
+{  
     [SerializeField] private GameObject buildingPanel;
+    [SerializeField] private SpriteInteraction agency;
+    private ShopElements[] shopElements;
+   // private HeroPersistance heroPersistance;
     void Start()
-    {
-        for (int i = 0; i < buildings.Length; i++)
+    {             
+        agency.popUp += OpenTab;
+        shopElements = FindObjectsOfType<ShopElements>();
+      //  heroPersistance = FindObjectOfType<HeroPersistance>();
+       for (int i = 0; i < shopElements.Length; i++)
         {
-            buildings[i].popUp += OpenTab;
+            shopElements[i].ChoosedHero += OnChooseHero;
         }
-    }
+     }
+ 
 
-   
-
-  
+    
 
     void OpenTab(){
         if(!buildingPanel.activeInHierarchy){
@@ -22,5 +26,8 @@ public class GameManager : MonoBehaviour
         }
         else
         Debug.Log("tab open");
+    }
+    void OnChooseHero(HeroData hero){
+    HeroPersistance.Instance.myHeros.Add(hero);    
     }
 }
