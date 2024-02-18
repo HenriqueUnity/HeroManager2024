@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: crimeData1
   m_EditorClassIdentifier: 
   crimeLord: {fileID: 11400000, guid: a382cad06fcd279f28a9df4b19e531a6, type: 2}
+  localName: Esgoto
   crimeValue: 100
   dangerValue: 500
+  operationSlot: 2
   crimeTraits:
   - qualquer
   - grudento

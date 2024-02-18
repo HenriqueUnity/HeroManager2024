@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class CrimeData : ScriptableObject
 {
-    public CrimeLordData crimeLord;
+   public CrimeLordData crimeLord;
+   public string localName;
    public float crimeValue;
    public float dangerValue;
+   public int operationSlot;   
+
    public List<string> crimeTraits = new();
     
 }

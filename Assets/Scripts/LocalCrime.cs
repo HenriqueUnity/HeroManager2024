@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class LocalCrime : MonoBehaviour
 {
-    [SerializeField] private CrimeData data;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField] public CrimeData data;
+    public delegate void SetCrimeData(CrimeData data);
+    public event SetCrimeData SettedCrimeData;
+    public void DataSetted(){
+       SettedCrimeData?.Invoke(data);
     }
 }
