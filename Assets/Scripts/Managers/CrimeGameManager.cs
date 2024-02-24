@@ -9,10 +9,12 @@ public class CrimeGameManager : MonoBehaviour
    
    [SerializeField] private LocalCrime[] locals;
    [SerializeField] private LocalPanel localPanel;
-    
+   [SerializeField] private GameObject panel;
+
+   
     void Start()
     {
-   
+   panel.SetActive(false);
    for (int i = 0; i < locals.Length; i++)
    {
     locals[i].SettedCrimeData += SetData;
@@ -29,7 +31,6 @@ public class CrimeGameManager : MonoBehaviour
     private void SetData(CrimeData data){
      localPanel.GetData(data);
     }
-
    
    
     private void OpenTab(){

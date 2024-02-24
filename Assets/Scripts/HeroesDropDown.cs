@@ -9,37 +9,38 @@ using UnityEngine.UI;
 public class HeroesDropDown : MonoBehaviour
 {
 
-    [SerializeField] private List<HeroData> myHeroes;
-    [SerializeField] private Sprite defaultImage;
-    [SerializeField] private GameObject[] HeroOptions;
-    private Dictionary<int,HeroData> heroButton = new();
-    public UnityEvent<HeroData> HeroEvent = new UnityEvent<HeroData>();
+    [SerializeField] private List<HeroData> myHeroes;    
+    [SerializeField] private GameObject[] heroOptions;
     
+    
+ 
     void Start()
     { 
+      for (int i = 0; i < heroOptions.Length; i++)
+      {
+         if(heroOptions[i].activeInHierarchy){
+            heroOptions[i].SetActive(false);
+         }
+      }
+           gameObject.SetActive(false);
+      
+    }
+
+   public void DropDownStart(){
+    if(gameObject.activeInHierarchy){
+      gameObject.SetActive(false);
+      return;
+    } else{
+      gameObject.SetActive(true);
+    } 
+    myHeroes = HeroPersistance.Instance.myHeros; 
+    Debug.Log(myHeroes.Count);
+   
     
-
-       DropDownIntance();
-    }
-
-    public void DropDownIntance(){
-     
-       for (int i = 0; i < myHeroes.Count; i++)
-       {
-        HeroEvent.AddListener(MyEventHandler);
-        HeroOptions[i].SetActive(true);
-        heroButton[i] = myHeroes[i];
-         HeroEvent.Invoke(heroButton[i]);
-        
-        
-       }
-     
-       
-    }
-    void MyEventHandler(HeroData hero)
+    for (int i = 0; i < myHeroes.Count; i++)
     {
-        Debug.Log(hero.heroName);
+      heroOptions[i].SetActive(true);
     }
-    
+   }
 }
 
