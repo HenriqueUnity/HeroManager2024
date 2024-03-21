@@ -11,6 +11,7 @@ public class ShopElements : MonoBehaviour
    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI powertxt;
    [SerializeField] private HeroData heroAvailable;
+   private Image portraitSPrite;
   private Button actionButton;
   
 
@@ -19,7 +20,8 @@ public class ShopElements : MonoBehaviour
    
     void Start()
     {
-
+      portraitSPrite = GetComponent<Image>();
+      portraitSPrite.sprite = heroAvailable.spritePortrait;
       actionButton = GetComponentInChildren<Button>();
       actionButton.onClick.AddListener(ChooseFunction);
       nameText.text = heroAvailable.heroName;

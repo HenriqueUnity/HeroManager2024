@@ -16,6 +16,7 @@ MonoBehaviour:
   power: 230
   fame: 250
   value: 150
+  spritePortrait: {fileID: 21300000, guid: eb8115fce40035390b8413217355260f, type: 3}
   traits:
   - "tra\xE7o1"
   - "tra\xE7o2"

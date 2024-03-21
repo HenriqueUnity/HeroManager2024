@@ -16,5 +16,5 @@ MonoBehaviour:
   localName: 'Periferia '
   crimeValue: 0
   dangerValue: 0
-  operationSlot: 4
+  operationSlot: 3
   crimeTraits: []

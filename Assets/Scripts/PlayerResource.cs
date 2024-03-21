@@ -37,15 +37,15 @@ public class PlayerResource : MonoBehaviour
     
 
     private void Awake()
-    {
+    {         
        
-     
-       
-          DontDestroyOnLoad(this);
-        
-       if (instance != null && instance != this)
+         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this);
+        }else{
+            DontDestroyOnLoad(this);
+            instance = this;
+            Debug.Log("instance dont destroyed");
         }
     }
 

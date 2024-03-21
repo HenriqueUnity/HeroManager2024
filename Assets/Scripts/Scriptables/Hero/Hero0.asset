@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: Hero0
   m_EditorClassIdentifier: 
-  heroName: "Capit\xE3o alguma coisa"
+  heroName: batma
   power: 100
   fame: 100
   value: 200
+  spritePortrait: {fileID: 21300000, guid: 82881db956f28188fbfbf8410122ceae, type: 3}
   traits:
   - "Tra\xE7o1"
   - "Tra\xE7o2"

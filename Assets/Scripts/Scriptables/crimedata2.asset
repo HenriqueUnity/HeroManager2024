@@ -16,5 +16,5 @@ MonoBehaviour:
   localName: Centro urbano
   crimeValue: 100
   dangerValue: 0
-  operationSlot: 3
+  operationSlot: 2
   crimeTraits: []

@@ -5,8 +5,12 @@ using UnityEngine;
 public class SetSlot : MonoBehaviour
 {
     [SerializeField] private SlotSelect[] slots;
-    private List<int> indexes;
+    [SerializeField] private int localIndex;
+    
+    
     private List<HeroData> heroesSetted = new();
+    public delegate void HeroSet(int index,HeroData hero);
+    public event HeroSet HeroSetted;
     void Start()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -31,6 +35,7 @@ public class SetSlot : MonoBehaviour
     for (int i = 0; i < heroesSetted.Count; i++)
     {
         Debug.Log(heroesSetted[i].heroName) ;
+        HeroSetted?.Invoke(localIndex,heroesSetted[i]);
     }
 
   }

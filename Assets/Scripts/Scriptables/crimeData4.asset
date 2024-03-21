@@ -16,5 +16,5 @@ MonoBehaviour:
   localName: Zona industrial
   crimeValue: 0
   dangerValue: 0
-  operationSlot: 5
+  operationSlot: 4
   crimeTraits: []

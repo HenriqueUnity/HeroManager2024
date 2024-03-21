@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
   
     void Start()
     {             
-        agency.popUp += OpenTab;
+        //agency.popUp += OpenTab;
        
       
      

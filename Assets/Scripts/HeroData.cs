@@ -11,12 +11,13 @@ public class HeroData : ScriptableObject
    public float power;
    public float fame;
    public float value;
+   public Sprite spritePortrait;
    public List <string> traits ;
    public List <float> conditions ;
    
 
    
-   public HeroData(string heroName, float power, float fame, float value, List<string> traits, List<float> conditions)
+   public HeroData(string heroName, float power, float fame, float value, List<string> traits, List<float> conditions, Sprite portrait) 
     {
         this.heroName = heroName;
         this.power = power;
@@ -24,6 +25,7 @@ public class HeroData : ScriptableObject
         this.value = value;
         this.traits = traits;
         this.conditions = conditions;
+        this.spritePortrait = portrait; 
     }
    
    

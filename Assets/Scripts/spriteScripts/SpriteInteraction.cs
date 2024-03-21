@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpriteInteraction : MonoBehaviour
 {
-    public delegate void PopUp();
-    public PopUp popUp;
-  
+    public delegate void PopUp(int index);
+    public  PopUp popUp;
+    [SerializeField]private int index;
    
    public void OnMouseDown()
     {
-      popUp?.Invoke();
+      popUp?.Invoke(index);
     }
   
     

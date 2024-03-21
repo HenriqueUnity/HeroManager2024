@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: Hero3
   m_EditorClassIdentifier: 
-  heroName: Fanatico
+  heroName: 'Super Son Joao '
   power: 400
   fame: 200
   value: 200
+  spritePortrait: {fileID: 21300000, guid: 99fa713ca5c7cc205ab1cd525c587081, type: 3}
   traits:
-  - "Tra\xE7o1"
+  - Homicida
+  - Noturno
+  - "n\xE3o Coopera/Coopera com policia "
+  - "Trabalha em equipe/ lobo solit\xE1rio"
   conditions:
   - 100
   - 100

@@ -16,7 +16,7 @@ MonoBehaviour:
   localName: Esgoto
   crimeValue: 100
   dangerValue: 500
-  operationSlot: 2
+  operationSlot: 1
   crimeTraits:
   - qualquer
   - grudento

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
   m_Name: hero6
   m_EditorClassIdentifier: 
-  heroName: mulher mulher
+  heroName: rukarine
   power: 325
   fame: 150
   value: 200
+  spritePortrait: {fileID: 21300000, guid: c692dd0f91993cc4cbd9d60481a4dad7, type: 3}
   traits:
   - "Tra\xE7o1"
   - "Tra\xE7o2"
