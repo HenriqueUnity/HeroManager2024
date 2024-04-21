@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CrimeScene.unity
     guid: efe8ef30a254d0e56be671699e0c926b
+  - enabled: 1
+    path: Assets/Scenes/ActionScene.unity
+    guid: 3f35b2356414f270bae84d0683b0573a
+  - enabled: 1
+    path: Assets/Scenes/ReportScene.unity
+    guid: 5cba3c825852eb253b0cd68b6cbc9292
   m_configObjects: {}

@@ -6,11 +6,12 @@ using System;
 [CreateAssetMenu(fileName = "Data", menuName = "EventData/NewEventData")]
 public class EventData : ScriptableObject
 {
+   public int localIndex;
    public Sprite[] frames;
    public bool[] dialogCheck;
    public string[] speechBallon;
    public Sprite[] resultFrame;
    //resultframe0 = good
-    //resultframe0 = bad
-     //resultframe0 = neutral
+    //resultframe1 = bad
+     //resultframe2 = neutral
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e561d079bdf31eca522a4c4a9fde8e, type: 3}
+  m_Name: Metal_Hero
+  m_EditorClassIdentifier: 
+  heroName: Metal
+  power: 150
+  fame: 150
+  value: 300
+  traits:
+  - Metalico
+  - Controle Remoto
+  conditions:
+  - 300
+  - 1000
+  - 400
+  spritePortrait: {fileID: 21300000, guid: c3af51a826daa5e769bb3a8b7ab49cc0, type: 3}
+  heroImage: {fileID: 21300000, guid: 4e0b9868e579fbb8a97ef595c888ba8a, type: 3}
+  heroPose: {fileID: 21300000, guid: 3de22136481148d2cbccbc5bf6c6d956, type: 3}

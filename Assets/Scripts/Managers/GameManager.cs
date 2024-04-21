@@ -5,24 +5,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject buildingPanel;
     [SerializeField] private SpriteInteraction agency;
     
-    private ShopElements[] shopElements;
+    [SerializeField ]private ShopElements[] shopElements;
     
   
     void Start()
     {             
         //agency.popUp += OpenTab;
        
-      
+      DayManager.instance.SetText();
+      StartAgencyPanel();
      
      }
  
 
     void StartAgencyPanel(){
-        shopElements = FindObjectsOfType<ShopElements>();
+     //   shopElements = FindObjectsOfType<ShopElements>();
        for (int i = 0; i < shopElements.Length; i++)
         {
             shopElements[i].ChoosedHero += OnChooseHero;
-            Debug.Log("assinou OnChooseHero");
+            Debug.Log($"assinou OnChooseHero: {i}");
         }
     }
 
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("tab open");
     }
     void OnChooseHero(HeroData hero){
-    HeroPersistance.Instance.myHeros.Add(hero);    
+        
+
+        HeroPersistance.Instance.myHeros.Add(hero);    
     }
 }

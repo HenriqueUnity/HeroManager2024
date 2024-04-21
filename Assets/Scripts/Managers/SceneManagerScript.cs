@@ -12,4 +12,9 @@ public class SceneManagerScript : MonoBehaviour
  public void ChangeScene(){
     SceneManager.LoadScene(sceneName);
  }
+
+ public void FinishActionScene(){
+   DayManager.instance.PassReport();
+    SceneManager.LoadScene(sceneName);
+ }
 }

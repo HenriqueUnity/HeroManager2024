@@ -23,14 +23,14 @@ public class ShopElements : MonoBehaviour
       portraitSPrite = GetComponent<Image>();
       portraitSPrite.sprite = heroAvailable.spritePortrait;
       actionButton = GetComponentInChildren<Button>();
-      actionButton.onClick.AddListener(ChooseFunction);
+      //actionButton.onClick.AddListener(ChooseFunction);
       nameText.text = heroAvailable.heroName;
       powertxt.text = heroAvailable.power.ToString();
 
     }
 
     // Update is called once per frame
-    void ChooseFunction(){
+    public void ChooseFunction(){
       Debug.Log("função atribuida");
       ChoosedHero?.Invoke(heroAvailable);
       actionButton.interactable = false;

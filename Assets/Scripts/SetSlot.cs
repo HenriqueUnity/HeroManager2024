@@ -21,7 +21,28 @@ public class SetSlot : MonoBehaviour
     }
 
     private void UnSetSlot(int index){
-      Debug.Log($"removed {HeroPersistance.Instance.myHeros[index].heroName}");
+
+
+      HeroData hero = HeroPersistance.Instance.myHeros[index];
+      switch (localIndex)
+    {
+        case 0:
+        HeroInAction.Instance.heroInAction0.Remove(hero);
+        
+        break; 
+        case 1:
+        HeroInAction.Instance.heroInAction1.Remove(hero);
+        
+        break;
+        case 2:
+        HeroInAction.Instance.heroInAction2.Remove(hero);
+
+        break; 
+        case 3:
+        HeroInAction.Instance.heroInAction3.Remove(hero);
+        break;
+    }
+     Debug.Log($"removed {HeroPersistance.Instance.myHeros[index].heroName}");
      heroesSetted.Remove(HeroPersistance.Instance.myHeros[index]);
     }
    void HeroSlot(int index){

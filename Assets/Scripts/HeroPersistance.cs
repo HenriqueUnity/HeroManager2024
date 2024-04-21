@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO.Enumeration;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HeroPersistance : MonoBehaviour
 {
    
     private static HeroPersistance instance;
     public List<HeroData> myHeros ;
+    [SerializeField] private List<Hero> heroRefs;
+    
+    //[SerializeField]private List<HeroData> heroDataBase;
     
 
     // Propriedade pública para acessar a instância Singleton
@@ -54,17 +58,22 @@ public class HeroPersistance : MonoBehaviour
  
     void Start()
     {
-    HeroMainData();
+ 
+   HeroMainData();
     }
 
    private void HeroMainData(){
     string fileName = "HeroJson";
     myHeros = FileHandler.ReadListFromJSON<HeroData>(fileName);
 
+  
+
+   
    }
 
-    
+
 }
+
 
  
 

@@ -27,17 +27,27 @@ public class SlotSelect : MonoBehaviour
 
  try{
 
-    if(!slotActive){
+    if(!slotActive && ActiveID.ID !=99){
          slotActive = true; 
          SlotSelected?.Invoke(index); 
          portraitActive.sprite = HeroPersistance.Instance.myHeros[index].spritePortrait;
          clearIndex = index;          
-    }else{
+    }else if(ActiveID.ID !=99){
+
+      
          slotActive = false;
          portraitActive.sprite = defaultSprite;
          SlotCleared?.Invoke(clearIndex);
         }
-      }
+        else if(slotActive){
+          slotActive = false;
+         portraitActive.sprite = defaultSprite;
+         SlotCleared?.Invoke(clearIndex);
+        }
+          
+
+        }
+      
 catch (Exception e)
     {
   Debug.Log(e.Message);

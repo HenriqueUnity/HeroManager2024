@@ -15,6 +15,6 @@ MonoBehaviour:
   crimeLord: {fileID: 0}
   localName: Centro urbano
   crimeValue: 100
-  dangerValue: 0
-  operationSlot: 2
+  dangerValue: 100
+  operationSlot: 4
   crimeTraits: []
