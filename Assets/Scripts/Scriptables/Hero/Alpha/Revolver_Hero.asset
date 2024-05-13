@@ -22,10 +22,13 @@ MonoBehaviour:
   - Duelista
   - "Alco\xF3latra"
   - Fumante
+  - 
   conditions:
   - 150
   - 100
   - 500
+  maxHealth: 150
+  maxFadigue: 100
   spritePortrait: {fileID: 21300000, guid: 99fa713ca5c7cc205ab1cd525c587081, type: 3}
   heroImage: {fileID: 21300000, guid: d499a6c5f38d71d598bcede15454a6ef, type: 3}
   heroPose: {fileID: 21300000, guid: 3de22136481148d2cbccbc5bf6c6d956, type: 3}

@@ -20,9 +20,11 @@ MonoBehaviour:
   - Metalico
   - Controle Remoto
   conditions:
-  - 300
-  - 1000
+  - 270
+  - 50
   - 400
+  maxHealth: 300
+  maxFadigue: 1000
   spritePortrait: {fileID: 21300000, guid: c3af51a826daa5e769bb3a8b7ab49cc0, type: 3}
   heroImage: {fileID: 21300000, guid: 4e0b9868e579fbb8a97ef595c888ba8a, type: 3}
   heroPose: {fileID: 21300000, guid: 3de22136481148d2cbccbc5bf6c6d956, type: 3}

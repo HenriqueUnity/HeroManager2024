@@ -9,12 +9,12 @@ public class HeroPersistance : MonoBehaviour
    
     private static HeroPersistance instance;
     public List<HeroData> myHeros ;
-    [SerializeField] private List<Hero> heroRefs;
+   // [SerializeField] private List<Hero> heroRefs;
     
     //[SerializeField]private List<HeroData> heroDataBase;
     
 
-    // Propriedade pública para acessar a instância Singleton
+
     public static HeroPersistance Instance
     {
         get
@@ -70,6 +70,8 @@ public class HeroPersistance : MonoBehaviour
 
    
    }
+
+  
 
 
 }

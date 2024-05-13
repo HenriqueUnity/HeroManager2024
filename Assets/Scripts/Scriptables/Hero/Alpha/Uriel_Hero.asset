@@ -23,6 +23,8 @@ MonoBehaviour:
   - 800
   - 100
   - 30
+  maxHealth: 800
+  maxFadigue: 100
   spritePortrait: {fileID: 21300000, guid: a384cfa51e5f413599ee9498cd9d0123, type: 3}
   heroImage: {fileID: 21300000, guid: bd8428fff25a89e908bf7e780bade4a2, type: 3}
   heroPose: {fileID: 21300000, guid: 3de22136481148d2cbccbc5bf6c6d956, type: 3}

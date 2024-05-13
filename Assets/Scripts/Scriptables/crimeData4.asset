@@ -15,6 +15,6 @@ MonoBehaviour:
   crimeLord: {fileID: 0}
   localName: Zona industrial
   crimeValue: 0
-  dangerValue: 0
+  dangerValue: 4
   operationSlot: 4
   crimeTraits: []

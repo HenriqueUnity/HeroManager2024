@@ -1,56 +1,132 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
-
     
 [SerializeField] private EventData[] eventData;
+
 
 [Header("Scene Objects")]
 [SerializeField] private GameObject[] ballonObject;
 
 [SerializeField] private TextMeshProUGUI[] speechText;
+
+
 [Header("Frames")]
 [SerializeField] private SpriteRenderer[] frames;
 [SerializeField] private SpriteRenderer result;
+
 
 [Header("variables frames")]
 [SerializeField] private SpriteRenderer resultFrame;
 [SerializeField] private Sprite[] groupSprite;
 
+[Header("Choices Var")]
+[SerializeField] private Image[] choicesSprite; 
+[SerializeField] private GameObject choicesPanel;
+[SerializeField] private TextMeshProUGUI[] choicesNameTxt;
+
+
+
 
 [Header("Buttons")]
 [SerializeField]private Button EventStart_B;
-[SerializeField]private Button NextScene_B;
+[SerializeField]private GameObject NextScene_B;
+[SerializeField]private Button Next_choices_B;
 
+
+[Header("Report")]
+[SerializeField] private Report[] toReport;
+private EmptyEvent empty;
 private int localIndex = 0;
 private EventData currentEvent;
+
+
+[Header("result var")]
+private float crimeModifier;
+private string resultString;
+
 void Start()
 {
+empty = GetComponent<EmptyEvent>();
 LocalIndex();
-EventStart();
-}
-private void LocalIndex(){
-for (int i = 0; i < eventData.Length; i++)
-{
-if(localIndex == i){
-currentEvent = eventData[i];
 
-return;
-} 
-if(ActiveHeroList().Count==0){
-Debug.Log("area sem herois");
-EventStart_B.interactable= false;
-NextScene_B.interactable = true;
 }
-}
+// private void LocalIndex()
+// {
+//    if (localIndex > eventData.Length)
+//    {
+//    EventStart_B.interactable = false;
+//    NextScene_B.SetActive(true);
+//    }
+//    else
+//    {
+//             for (int i = 0; i < eventData.Length; i++)
+//             {
+//                 if (localIndex == i)
+//                 {
+//                     currentEvent = eventData[i];                   
+//                 if (ActiveHeroList().Count == 0)
+//                 {                  
+
+//                      SetReport(localIndex, currentEvent, empty.GetSetence());
+//                             localIndex++;
+//                             LocalIndex();                          
+//                             break;
+//                    }
+//                 }
+//             }
+//    }
+        
+// }
+private void LocalIndex()
+    {
+        while (localIndex < eventData.Length)
+        {
+            currentEvent = eventData[localIndex];
+
+            if (ActiveHeroList().Count > 0)
+            {
+                // Proceed with event as usual if there are active heroes
+               
+                StartCoroutine(StartEventDelay());
+                return; // Exit the loop
+            }
+
+            localIndex++; // Move to the next event index
+        }
+
+        // No events found with active heroes, activate next scene button
+        if(localIndex<4){
+        SetReport(localIndex, currentEvent, empty.GetSetence());
+        }
+        NextScene_B.SetActive(true);
+        EventStart_B.interactable = false;
+        Next_choices_B.interactable = false;
+    }
+IEnumerator StartEventDelay(){
+   // Option 1: Wait for 3 seconds or space key press (more flexible)
+    float timer = 3f;
+    while (timer > 0f && !Input.GetKeyDown(KeyCode.Space))
+    {
+        timer -= Time.deltaTime;
+        yield return null;
+    }
+
+    // Option 2: Wait for 3 seconds only (simpler)
+    // yield return new WaitForSeconds(3f);
+
+    EventStart();
+
 }
 public void BalloonTrigger(){
 int boolCount = currentEvent.dialogCheck.Length;     
@@ -70,61 +146,177 @@ speechText[i].gameObject.SetActive(currentEvent.dialogCheck[i]);
 
 }
 public void EventStart(){
+ EventStart_B.interactable = false;
+ Next_choices_B.interactable = true;
 
 BalloonTrigger();
+DeactiveChoices();
+
 // speechText[0].text = currentEvent.localIndex.ToString();
 for (int i = 0; i < currentEvent.frames.Length; i++)
 {        
 frames[i].sprite = currentEvent.frames[i]; 
  if(i == 1)
  {
-switch(ActiveHeroList().Count)
-    {
- case 1:
-frames[i].sprite = ActiveHeroList()[0].heroPose; 
- break;
- case 2:
-frames[i].sprite = groupSprite[0];
- break;
- case 3:
- frames[i].sprite = groupSprite[1];
- break;
- case 4:
- frames[i].sprite = groupSprite[2];
- break;
-          //[0] = 2 hero silhoute
-          //[1] = 3 hero silhoute
-          //[2] = 4 hero silhoute
-     }
+HeroeGroup(i);
  }
  
 }
+
 }
 
-    public void EventResult( ){
-     Sprite[] resultImage = currentEvent.resultFrame;
-if( CrimeDataBase.instance.
-DangerValue(localIndex)<ActiveHeroList()[0].power){
-     resultFrame.sprite = resultImage[0];
-     //good result
-    }
-    if(CrimeDataBase.instance.
-DangerValue(localIndex)>ActiveHeroList()[0].power){
-       resultFrame.sprite = resultImage[1];
-       //bad result
-    }
-   if(CrimeDataBase.instance.
-DangerValue(localIndex)==ActiveHeroList()[0].power){
-     resultFrame.sprite= resultImage[2];
-     //neutral result
-    } 
+//conta o numero de heróis por evento/local
+private void HeroeGroup(int index){
+switch(ActiveHeroList().Count)
+    {
+ case 1:
+frames[index].sprite = ActiveHeroList()[0].heroPose; 
+ break;
+ case 2:
+frames[index].sprite = groupSprite[0];
+ break;
+ case 3:
+ frames[index].sprite = groupSprite[1];
+ break;
+ case 4:
+ frames[index].sprite = groupSprite[2];
+ break;
+}
+}
 
-    //result = resultFrame;
-    localIndex++;
-        LocalIndex();
+public void DeactiveChoices(){
+   
+   for (int i = 0; i < choicesSprite.Length; i++)
+   {
+       choicesSprite[i].gameObject.SetActive(false);
+   
+   }
+   if(choicesPanel.activeInHierarchy){
+      choicesPanel.SetActive(false);
+   }
+
+
+
+}
+
+public void ChooseSelected(int index){
+Next_choices_B.interactable = false;
+EventStart_B.interactable = true;
+frames[4].sprite = currentEvent.eventChoices[index].chooseSprite;
+DeactiveChoices();
+EventResult(index);
+}
+public void SetChoices(){
+   
+if(!choicesPanel.activeInHierarchy){
+
+   
+   choicesPanel.SetActive(true);
+   for (int i = 0; i < currentEvent.eventChoices.Length; i++)
+   {
+      choicesSprite[i].gameObject.SetActive(true);
+      choicesSprite[i].sprite = currentEvent.eventChoices[i].chooseSprite;
+      choicesNameTxt[i].text  = currentEvent.eventChoices[i].choose; 
+   }
+   }
+}
+
+
+
+#region event Result
+
+public void EventResult(int index ){
+     Sprite[] resultImage = currentEvent.resultFrame;
+     
+
+//* FIGHT OPTION
+switch(currentEvent.eventChoices[index].choose ){
+   case "fight":
+FightOption();
+   break;
+   default:
+ resultFrame.sprite= resultImage[2];
+ resultString  = "Neutral";
+ SetReport(localIndex,currentEvent,resultString);
+   break;
+} 
+
+ 
+localIndex++;
+   
+if(localIndex>3 ){
+   NextScene_B.SetActive(true);
+   EventStart_B.interactable = false;
+   return;
+   }
+ LocalIndex();
         }
 
+#endregion
 
+
+    //*Fight option function                      //fight option 
+#region FIGHTOPTION
+ private void FightOption(){
+
+   Sprite[] resultImage = currentEvent.resultFrame;
+     
+   float dangerFinalValue = CrimeDataBase.instance.
+     DangerValue(localIndex) * currentEvent.dangerModifier;
+float fightStrength = 0;
+for (int i = 0; i < ActiveHeroList().Count; i++)
+{
+  fightStrength += ActiveHeroList()[i].power;
+}
+if( dangerFinalValue < fightStrength){
+     resultFrame.sprite = resultImage[0];
+     resultString  = "Good";
+     crimeModifier = fightStrength / currentEvent.dangerModifier;
+
+float dangerMulti = 0.05f * CrimeDataBase.instance.crimeData[localIndex].dangerValue;
+
+
+for (int i = 0; i < ActiveHeroList().Count; i++)
+{
+   ActiveHeroList()[i].conditions[0] -= ActiveHeroList()[i].maxHealth * dangerMulti;;   
+}
+     
+     SetReport(localIndex,currentEvent,resultString);
+
+
+     //good result
+    }
+    if(dangerFinalValue > fightStrength){
+       resultFrame.sprite = resultImage[1];
+       resultString  = "Bad";
+       crimeModifier = 0;
+
+    
+
+    float dangerMulti = 0.2f * CrimeDataBase.instance.crimeData[localIndex].dangerValue;
+    for (int i = 0; i < ActiveHeroList().Count; i++){
+     ActiveHeroList()[i].conditions[0] -= ActiveHeroList()[i].maxHealth * dangerMulti;;
+    }
+
+      SetReport(localIndex,currentEvent,resultString);
+       //bad result
+    }
+ }
+
+ #endregion FIGHTOPTION
+
+    //*Set report  //set report // set report // set report
+
+     private void SetReport(int index,EventData _currentEvent,string result){
+     toReport[index].enemiesNumber = _currentEvent.enemiesNumber;
+     toReport[index].innocentNumber = _currentEvent.innocentNumber;
+     toReport[index].crimeChange = crimeModifier;
+     toReport[index].result  = result;
+     toReport[index].heroesReport = ActiveHeroList();
+
+     ReportPersistance.Instance.SetReport(toReport[index]);
+     
+     }
      public List<HeroData> ActiveHeroList(){
         switch(localIndex){  
            case 1: 

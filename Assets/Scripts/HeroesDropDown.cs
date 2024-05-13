@@ -11,11 +11,12 @@ public class HeroesDropDown : MonoBehaviour
 
     [SerializeField] private List<HeroData> myHeroes;    
     [SerializeField] private GameObject[] heroOptions;
-    
+    private  AvailableControl available; 
     
  
     void Start()
     { 
+      available = GetComponent<AvailableControl>();
       for (int i = 0; i < heroOptions.Length; i++)
       {
          if(heroOptions[i].activeInHierarchy){
@@ -34,13 +35,18 @@ public class HeroesDropDown : MonoBehaviour
       gameObject.SetActive(true);
     } 
     myHeroes = HeroPersistance.Instance.myHeros; 
-    Debug.Log(myHeroes.Count);
+    Debug.Log($"numero total de herois :  {myHeroes.Count}");
    
     
     for (int i = 0; i < myHeroes.Count; i++)
-    {
-      heroOptions[i].SetActive(true);
+        {
+            heroOptions[i].SetActive(true);
+            if (available.AvailableCheck(myHeroes[i]))
+            {
+                continue;
+            }
+            heroOptions[i].GetComponent<Button>().interactable = false;
+        }
     }
-   }
 }
 

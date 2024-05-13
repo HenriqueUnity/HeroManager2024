@@ -28,7 +28,7 @@ public class CrimeDataBase : MonoBehaviour
  return crimeData[index].localName;
   }
 public float DangerValue(int index){
-return crimeData[index].dangerValue;
+return crimeData[index].crimeValue;
 }
 public void CrimeValueChange(float value , int index){
 crimeData[index].crimeValue += value; 

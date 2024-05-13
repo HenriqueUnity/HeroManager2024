@@ -13,9 +13,10 @@ public class HeroData : ScriptableObject
    public float fame;
    public float value;
 
-   
    public List <string> traits ;
    public List <float> conditions ;
+   public float maxHealth;
+   public float maxFadigue;
    
    [Header("Sprites")]
    public Sprite spritePortrait;

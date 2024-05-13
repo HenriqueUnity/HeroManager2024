@@ -21,9 +21,11 @@ MonoBehaviour:
   - "N\xE3o poupa Assassinos"
   - Armas brancas
   conditions:
-  - 150
-  - 250
+  - 135
+  - 100
   - 600
+  maxHealth: 150
+  maxFadigue: 100
   spritePortrait: {fileID: 21300000, guid: 46015142c05818eb893c3954c261ad47, type: 3}
   heroImage: {fileID: 21300000, guid: 8cb23adaf0b42e656a1cc05d6d9b2e0d, type: 3}
   heroPose: {fileID: 21300000, guid: 38f6a042433c1dbc89889246214f62d6, type: 3}

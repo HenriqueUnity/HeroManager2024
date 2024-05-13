@@ -12,6 +12,9 @@ public class HeroOverview : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] atributes;
     [SerializeField] private TextMeshProUGUI[] traits;
     [SerializeField] private TextMeshProUGUI[] conditions;
+    [SerializeField] private TextMeshProUGUI maxHealth;
+    [SerializeField] private TextMeshProUGUI maxFadigue;
+
     [SerializeField] private Image fullPortrait;
 
     private int maxTraits = 10;
@@ -37,6 +40,8 @@ public class HeroOverview : MonoBehaviour
     atributes[0].text = heroData.power.ToString();
     atributes[1].text = heroData.fame.ToString();
     atributes[2].text = heroData.value.ToString();
+    maxHealth.text    = heroData.maxHealth.ToString();
+    maxFadigue.text    = heroData.maxFadigue.ToString();  
     fullPortrait.sprite = heroData.heroImage;
 
     for (int i = 0; i < heroData.traits.Count; i++)

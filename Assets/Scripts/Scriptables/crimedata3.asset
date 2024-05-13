@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crimeLord: {fileID: 0}
   localName: 'Periferia '
-  crimeValue: 0
-  dangerValue: 0
+  crimeValue: 500
+  dangerValue: 3
   operationSlot: 3
   crimeTraits: []
