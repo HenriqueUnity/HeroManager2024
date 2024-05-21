@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localIndex: 0
   enemiesNumber: 3
-  innocentNumber: 0
+  enemiesDefeated: 3
+  enemiesPower: 160
   fameModifier: 1.1
   dangerModifier: 1.6
   frames:
@@ -28,8 +29,8 @@ MonoBehaviour:
   speechBallon:
   - 
   - 
-  - Teste
-  - Teste
+  - c mon
+  - niceeeeeeee
   - 
   - 
   eventChoices:

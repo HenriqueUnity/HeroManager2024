@@ -15,9 +15,7 @@ public class Report : ScriptableObject
    public int enemiesNumber;
    public int enemiesDefeated;
 
-   [Header("enemies Info")]
-   public int innocentNumber;
-   public int innocentRescued;
+  
 
    [Header("modifiers info")]     
    public float dangerModifier;

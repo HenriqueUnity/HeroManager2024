@@ -7,10 +7,18 @@ using System;
 public class EventData : ScriptableObject
 {
    public int localIndex;
+
+   [Header("Enemies")]
    public int enemiesNumber;
-   public int innocentNumber;
+   public int enemiesDefeated;
+   public float enemiesPower;
+   
+   
+   [Header("modifier")]
    public float fameModifier;   
    public float dangerModifier;
+
+   [Header("others")]
    public Sprite[] frames;
    public bool[] dialogCheck;
    public string[] speechBallon;

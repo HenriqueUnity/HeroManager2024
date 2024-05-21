@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: day1thirdEvt 1
   m_EditorClassIdentifier: 
   localIndex: 3
-  enemiesNumber: 6
-  innocentNumber: 1
+  enemiesNumber: 0
+  enemiesDefeated: 0
+  enemiesPower: 0
   fameModifier: 1.2
   dangerModifier: 1.8
   frames:
@@ -24,13 +25,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 03146a9dfb028eaefb765066295d475b, type: 3}
   - {fileID: 21300000, guid: dcda03e5c639675f2ae2708b5b4accba, type: 3}
   - {fileID: 21300000, guid: 4ca2940725a35e132b67010b985873e7, type: 3}
-  dialogCheck: 000001000100
+  dialogCheck: 000001000000
   speechBallon:
   - 
   - 
-  - fala evento 4
+  - seens calm
   - 
-  - teste
+  - 
   - 
   eventChoices:
   - {fileID: 11400000, guid: 6b4b4fbe626b9111988425295bae7bec, type: 2}

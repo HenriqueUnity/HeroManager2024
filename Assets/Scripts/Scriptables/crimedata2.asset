@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crimeLord: {fileID: 0}
   localName: Centro urbano
-  crimeValue: 100
+  crimeValue: 1000
   dangerValue: 2
   operationSlot: 4
   crimeTraits: []

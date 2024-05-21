@@ -20,7 +20,7 @@ MonoBehaviour:
   - Metalico
   - Controle Remoto
   conditions:
-  - 270
+  - 240
   - 50
   - 400
   maxHealth: 300

@@ -18,7 +18,7 @@ public List<Report> _reports;
 [SerializeField] private GameObject ReportOVPanel;
 [SerializeField] private TextMeshProUGUI localNameTxt;
 [SerializeField] private TextMeshProUGUI enemiesTxt; 
-[SerializeField] private TextMeshProUGUI innocentTxt;
+
 [SerializeField] private TextMeshProUGUI crimeUpdateTxt;
 [SerializeField] private TextMeshProUGUI resultTxt; 
 
@@ -49,8 +49,8 @@ SceneManager.sceneLoaded += dayManager.OnSceneLoaded;
 public void ReportStart(int index){
     ReportOVPanel.SetActive(true);
     localNameTxt.text = CrimeDataBase.instance.crimeData[index].localName;
-    enemiesTxt.text = $"00/{_reports[index].enemiesNumber.ToString()}";
-    innocentTxt.text = $"00/{_reports[index].innocentNumber.ToString()}";
+    enemiesTxt.text = $"{_reports[index].enemiesDefeated}/{_reports[index].enemiesNumber.ToString()}";
+   
     crimeUpdateTxt.text = $"{CrimeChangeString(index)}  {CrimeCalc(index).ToString()}";
     resultTxt.text = _reports[index].result;
     HeroShow(index);
@@ -77,11 +77,11 @@ private float CrimeCalc(int index)
 }
 
 private string CrimeChangeString(int index){
-    if(_reports[index].crimeChange >= 0 ){
-        return $"+({_reports[index].crimeChange})";
+    if(_reports[index].crimeChange > 0 ){
+        return $"-({_reports[index].crimeChange}) /";
     }else{
 
-    return $"-({_reports[index].crimeChange})";
+    return $"({_reports[index].crimeChange}) /";
     }
 }
 

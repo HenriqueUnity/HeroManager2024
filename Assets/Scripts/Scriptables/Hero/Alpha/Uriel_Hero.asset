@@ -20,7 +20,7 @@ MonoBehaviour:
   - "Puni\xE7\xE3o"
   - "N\xE3o coopera"
   conditions:
-  - 800
+  - 560
   - 100
   - 30
   maxHealth: 800

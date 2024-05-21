@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crimeLord: {fileID: 0}
   localName: Zona industrial
-  crimeValue: 0
+  crimeValue: 1000
   dangerValue: 4
   operationSlot: 4
   crimeTraits: []

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: day1SecondEVt
   m_EditorClassIdentifier: 
   localIndex: 1
-  enemiesNumber: 0
-  innocentNumber: 1
+  enemiesNumber: 1
+  enemiesDefeated: 1
+  enemiesPower: 100
   fameModifier: 1
   dangerModifier: 0
   frames:
@@ -27,9 +28,9 @@ MonoBehaviour:
   dialogCheck: 000100010000
   speechBallon:
   - 
-  - Teste evento 2
+  - hello
   - 
-  - Teste
+  - i need a break
   - 
   - 
   eventChoices:

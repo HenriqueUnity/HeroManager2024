@@ -52,7 +52,7 @@ private EventData currentEvent;
 
 
 [Header("result var")]
-private float crimeModifier;
+private float _crimeChange;
 private string resultString;
 
 void Start()
@@ -61,33 +61,7 @@ empty = GetComponent<EmptyEvent>();
 LocalIndex();
 
 }
-// private void LocalIndex()
-// {
-//    if (localIndex > eventData.Length)
-//    {
-//    EventStart_B.interactable = false;
-//    NextScene_B.SetActive(true);
-//    }
-//    else
-//    {
-//             for (int i = 0; i < eventData.Length; i++)
-//             {
-//                 if (localIndex == i)
-//                 {
-//                     currentEvent = eventData[i];                   
-//                 if (ActiveHeroList().Count == 0)
-//                 {                  
 
-//                      SetReport(localIndex, currentEvent, empty.GetSetence());
-//                             localIndex++;
-//                             LocalIndex();                          
-//                             break;
-//                    }
-//                 }
-//             }
-//    }
-        
-// }
 private void LocalIndex()
     {
         while (localIndex < eventData.Length)
@@ -148,6 +122,7 @@ speechText[i].gameObject.SetActive(currentEvent.dialogCheck[i]);
 public void EventStart(){
  EventStart_B.interactable = false;
  Next_choices_B.interactable = true;
+ _crimeChange = 0;
 
 BalloonTrigger();
 DeactiveChoices();
@@ -262,16 +237,20 @@ if(localIndex>3 ){
    Sprite[] resultImage = currentEvent.resultFrame;
      
    float dangerFinalValue = CrimeDataBase.instance.
-     DangerValue(localIndex) * currentEvent.dangerModifier;
-float fightStrength = 0;
+   DangerValue(localIndex) * currentEvent.dangerModifier;
+   float fightStrength = 0;
+   
+
+
 for (int i = 0; i < ActiveHeroList().Count; i++)
 {
   fightStrength += ActiveHeroList()[i].power;
 }
+
 if( dangerFinalValue < fightStrength){
      resultFrame.sprite = resultImage[0];
      resultString  = "Good";
-     crimeModifier = fightStrength / currentEvent.dangerModifier;
+     
 
 float dangerMulti = 0.05f * CrimeDataBase.instance.crimeData[localIndex].dangerValue;
 
@@ -280,16 +259,18 @@ for (int i = 0; i < ActiveHeroList().Count; i++)
 {
    ActiveHeroList()[i].conditions[0] -= ActiveHeroList()[i].maxHealth * dangerMulti;;   
 }
-     
-     SetReport(localIndex,currentEvent,resultString);
 
+    
+     EnemiesDefeat();
+     SetReport(localIndex,currentEvent,resultString);
+     
 
      //good result
     }
     if(dangerFinalValue > fightStrength){
        resultFrame.sprite = resultImage[1];
        resultString  = "Bad";
-       crimeModifier = 0;
+    
 
     
 
@@ -297,10 +278,32 @@ for (int i = 0; i < ActiveHeroList().Count; i++)
     for (int i = 0; i < ActiveHeroList().Count; i++){
      ActiveHeroList()[i].conditions[0] -= ActiveHeroList()[i].maxHealth * dangerMulti;;
     }
-
+      EnemiesDefeat();
       SetReport(localIndex,currentEvent,resultString);
        //bad result
     }
+ }
+
+ private void EnemiesDefeat(){
+   float eachEnemyPower = currentEvent. enemiesPower / currentEvent.enemiesNumber;
+   float heroesTotalPower= 0;
+   int enemiesDown = 0;
+   
+   for (int i = 0; i < ActiveHeroList().Count; i++)
+   {
+      heroesTotalPower += ActiveHeroList()[i].power; 
+   }
+   for (int i = 0; i < currentEvent.enemiesNumber; i++)
+   {
+      if(heroesTotalPower>eachEnemyPower){
+      heroesTotalPower -= eachEnemyPower;
+      _crimeChange += eachEnemyPower / 2;
+      enemiesDown ++;
+      }
+
+   }
+
+  currentEvent.enemiesDefeated = enemiesDown;
  }
 
  #endregion FIGHTOPTION
@@ -308,9 +311,10 @@ for (int i = 0; i < ActiveHeroList().Count; i++)
     //*Set report  //set report // set report // set report
 
      private void SetReport(int index,EventData _currentEvent,string result){
+     toReport[index].enemiesDefeated = currentEvent.enemiesDefeated;
      toReport[index].enemiesNumber = _currentEvent.enemiesNumber;
-     toReport[index].innocentNumber = _currentEvent.innocentNumber;
-     toReport[index].crimeChange = crimeModifier;
+   
+     toReport[index].crimeChange = _crimeChange;
      toReport[index].result  = result;
      toReport[index].heroesReport = ActiveHeroList();
 
